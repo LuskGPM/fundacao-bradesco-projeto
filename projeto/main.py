@@ -1,3 +1,4 @@
-from modules.criadorBD import banco_instancia
+from modules import *
 
-banco_instancia._execute()
+app = Gui()
+app.start()
