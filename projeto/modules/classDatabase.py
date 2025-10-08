@@ -2,13 +2,9 @@ import sqlite3 as sql
 
 class Banco():
     def __init__(self):
-        self.__database = 'banco.db'
         self.__conexao = None
         self.__cursor = None
         self.__conectado = False
-        
-    def _getDatabase(self):
-        return self.__database
     
     def _getConexao(self):
         return self.__conexao
@@ -17,7 +13,7 @@ class Banco():
         return self.__cursor
         
     def _conectar(self):
-        self.__conexao = sql.connect(self.__database)
+        self.__conexao = sql.connect('banco.db')
         self.__cursor = self.__conexao.cursor()
         self.__conectado = True
         
@@ -63,8 +59,9 @@ class Queries(Banco):
     def _view(self):
         self._conectar()
         self._execute('select * from clientes')
-        self._comitar()
+        linhas = self._fetchAll()
         self._disconectar()
+        return linhas
         
     def _search(self, nome:str = '', sobrenome:str = '', email:str = '', cpf:str = ''):
         self._conectar()

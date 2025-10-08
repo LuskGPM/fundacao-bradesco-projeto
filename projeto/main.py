@@ -1,7 +1,4 @@
-from modules import *
+from modules import App
 
-querieBanco.iniciarBanco()
-
-#querieBanco._insert('Lucas', 'Melo', 'teste01@teste.com', 'teste')
-
-querieBanco._delete(1)
+app = App()
+app.start()
