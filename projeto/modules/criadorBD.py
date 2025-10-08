@@ -1,3 +1,3 @@
-from .classDatabase import Banco
+from .classDatabase import Queries
 
-banco_instancia = Banco()
+querieBanco = Queries()
