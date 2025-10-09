@@ -1,6 +1,6 @@
 # PYSQL - Sistema de Gerenciamento de Clientes
 
-Sistema desktop desenvolvido em Python para gerenciamento de clientes com interface gráfica Tkinter e banco de dados SQLite.
+Sistema desktop desenvolvido em Python para gerenciamento de clientes com interface gráfica Tkinter e banco de dados SQLite utilizando fielmente os conceitos de Programação Orientada a Objetos.
 
 ## 📋 Funcionalidades
 
