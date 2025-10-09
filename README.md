@@ -54,7 +54,8 @@ pyinstaller main.spec
 ```
 
 ### Instale o executável 
-- baixe o zip main app na pasta /dist
+- Baixe o zip main app na pasta /dist
+- Seu Sistema Operacional irá avisá-lo de que o arquivo é potencialmente perigoso por questões de segurança, se quiser continuar, clique em "Executar mesmo assim" ou algo relacionado
 
 ## 💾 Banco de Dados
 
