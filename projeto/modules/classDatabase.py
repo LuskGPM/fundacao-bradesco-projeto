@@ -1,5 +1,5 @@
 import sqlite3 as sql
-from functions import *
+from .functions import *
 
 class Banco():
     def __init__(self):
@@ -54,7 +54,7 @@ class Queries(Banco):
     def _insert(self, nome:str, sobrenome:str, email:str, cpf:str):
         if validarEntradas(nome, sobrenome, email, cpf):    
             self._conectar()
-            self._execute('insert into clientes (nome, sobrenome, email, cpf) values (?, ?, ?, ?)', (nome, sobrenome, email, cpf))
+            self._execute('insert into clientes (nome, sobrenome, email, cpf) values (?, ?, ?, ?)', (nome.strip(), sobrenome.strip(), email.strip(), cpf.strip()))
             self._comitar()
             self._disconectar()
         else:
@@ -69,7 +69,7 @@ class Queries(Banco):
         
     def _search(self, nome:str = '', sobrenome:str = '', email:str = '', cpf:str = ''):
         self._conectar()
-        self._execute('select * from clientes where nome like ? or sobrenome like ? or email = ? or cpf = ?', (nome, sobrenome, email, cpf))
+        self._execute('select * from clientes where nome like ? or sobrenome like ? or email = ? or cpf = ?', (nome.strip(), sobrenome.strip(), email.strip(), cpf.strip()))
         linhas = self._fetchAll()
         self._disconectar()
         return linhas

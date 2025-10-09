@@ -14,7 +14,7 @@ def validarEntradas(nome:str, sobrenome:str, email:str, cpf:str) -> bool:
             print('Tamanho do CPF inválido')
             return False
         try:
-            cpf_tratado = int(cpf_int)
+            cpf_tratado = int(cpf_tratado)
             return True
         except TypeError as t:
             print(f'Erro: {t}')

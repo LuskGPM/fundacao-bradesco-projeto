@@ -1,5 +1,5 @@
 from .classTkinter import Gui
-from .criadorBD import Queries
+from .classDatabase import Queries
 
 class App(Gui, Queries):
     def __init__(self):
