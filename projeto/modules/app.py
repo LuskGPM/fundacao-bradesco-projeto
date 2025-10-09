@@ -81,8 +81,9 @@ class App(Gui, Queries):
         self._btnClose.configure(command=self._getJanela().destroy)
     
     def __constructApp(self):
+        self.iniciarBanco()
         janela = self._getJanela()
-        janela.wm_title('PYSQL Versão 1.2')
+        janela.wm_title('PYSQL Versão 1.3')
         self._createGrid()
         self._configureButtons()
         self._listarClientes.bind('<<ListboxSelect>>', self.getSelectedRow)
