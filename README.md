@@ -54,7 +54,7 @@ pyinstaller main.spec
 ```
 
 ### Instale o executável 
-- main.exe na pasta /dist
+- baixe o zip main app na pasta /dist
 
 ## 💾 Banco de Dados
 
