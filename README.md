@@ -113,9 +113,9 @@ python -m unittest test_util.py
 ## 🤝 Contribuição
 
 1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
+2. Crie uma branch para sua feature (`git checkout -b feature/Afeature`)
+3. Commit suas mudanças (`git commit -m 'Add some Afeature'`)
+4. Push para a branch (`git push origin feature/Afeature`)
 5. Abra um Pull Request
 
 ## 📄 Licença
