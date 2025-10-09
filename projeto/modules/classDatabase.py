@@ -1,4 +1,5 @@
 import sqlite3 as sql
+from functions import *
 
 class Banco():
     def __init__(self):
@@ -51,10 +52,13 @@ class Queries(Banco):
         self._disconectar()
         
     def _insert(self, nome:str, sobrenome:str, email:str, cpf:str):
-        self._conectar()
-        self._execute('insert into clientes (nome, sobrenome, email, cpf) values (?, ?, ?, ?)', (nome, sobrenome, email, cpf))
-        self._comitar()
-        self._disconectar()
+        if validarEntradas(nome, sobrenome, email, cpf):    
+            self._conectar()
+            self._execute('insert into clientes (nome, sobrenome, email, cpf) values (?, ?, ?, ?)', (nome, sobrenome, email, cpf))
+            self._comitar()
+            self._disconectar()
+        else:
+            return 'Dados inválidos'
         
     def _view(self):
         self._conectar()
@@ -77,7 +81,11 @@ class Queries(Banco):
         self._disconectar()
         
     def _update(self, id:int, nome:str, sobrenome:str, email:str, cpf:str):
-        self._conectar()
-        self._execute('update clientes set nome = ?, sobrenome = ?, email = ?, cpf = ? where id = ?', (nome, sobrenome, email, cpf, id))
-        self._comitar()
-        self._disconectar()
+        if validarEntradas(nome, sobrenome, email, cpf):
+            self._conectar()
+            self._execute('update clientes set nome = ?, sobrenome = ?, email = ?, cpf = ? where id = ?', (nome, sobrenome, email, cpf, id))
+            self._comitar()
+            self._disconectar()
+            
+        else:
+            return 'Dados inválidos'
