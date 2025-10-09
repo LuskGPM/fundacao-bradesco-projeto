@@ -65,9 +65,10 @@ class Queries(Banco):
         
     def _search(self, nome:str = '', sobrenome:str = '', email:str = '', cpf:str = ''):
         self._conectar()
-        self._execute('select from clientes where nome = ? or sobrenome = ? or email = ? or cpf = ?', (nome, sobrenome, email, cpf))
-        self._comitar()
+        self._execute('select * from clientes where nome like ? or sobrenome like ? or email = ? or cpf = ?', (nome, sobrenome, email, cpf))
+        linhas = self._fetchAll()
         self._disconectar()
+        return linhas
         
     def _delete(self, id:int):
         self._conectar()
@@ -80,4 +81,3 @@ class Queries(Banco):
         self._execute('update clientes set nome = ?, sobrenome = ?, email = ?, cpf = ? where id = ?', (nome, sobrenome, email, cpf, id))
         self._comitar()
         self._disconectar()
-

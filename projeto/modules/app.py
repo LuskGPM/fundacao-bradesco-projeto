@@ -7,12 +7,12 @@ class App(Gui, Queries):
     
     def _comandoViews(self):
         linhas = self._view()
-        self._listarClientes.delete(0, -1)
+        self._listarClientes.delete(0, 'end')
         for linha in linhas:
-            self._listarClientes.insert(-1, linha)
+            self._listarClientes.insert('end', linha)
             
     def _comandoBusca(self):
-        self._listarClientes.delete(0, -1)
+        self._listarClientes.delete(0, 'end')
         comand_cpf = self._getCPF()
         comand_email = self._getEmail()
         linhas = self._search(
@@ -23,7 +23,7 @@ class App(Gui, Queries):
         )
         
         for linha in linhas:
-            self._listarClientes.insert(-1, linha)
+            self._listarClientes.insert('end', linha)
         
     def _comandoInsert(self):
         insert_cpf = self._getCPF()
@@ -61,14 +61,14 @@ class App(Gui, Queries):
         
         index = self._listarClientes.curselection()[0]
         selected = self._listarClientes.get(index)
-        self._entNome.delete(0, -1)
-        self._entNome.insert(-1, selected[1])
-        self._entSobrenome.delete(0, -1)
-        self._entSobrenome.insert(-1, selected[2])
-        self._entEmail.delete(0, -1)
-        self._entEmail.insert(-1, selected[3])
-        self._entCpf.delete(0, -1)
-        self._entCpf.insert(-1, selected[4])
+        self._entNome.delete(0, 'end')
+        self._entNome.insert('end', selected[1])
+        self._entSobrenome.delete(0, 'end')
+        self._entSobrenome.insert('end', selected[2])
+        self._entEmail.delete(0, 'end')
+        self._entEmail.insert('end', selected[3])
+        self._entCpf.delete(0, 'end')
+        self._entCpf.insert('end', selected[4])
         
         return selected
     
@@ -80,10 +80,15 @@ class App(Gui, Queries):
         self._btnDel.configure(command=self._comandoDel)
         self._btnClose.configure(command=self._getJanela().destroy)
     
-    def start(self):
+    def __constructApp(self):
         janela = self._getJanela()
         janela.wm_title('PYSQL Versão 1.2')
         self._createGrid()
         self._configureButtons()
         self._listarClientes.bind('<<ListboxSelect>>', self.getSelectedRow)
+        self._comandoViews()
+        
+    def start(self):
+        self.__constructApp()
+        janela = self._getJanela()
         janela.mainloop()
